@@ -65,6 +65,7 @@ Here is the implementation code containing the agent definition, custom tool dec
 ```bash
 # To run the script
 uv run agent1.py
+```
 
 
 ### ðŸ§  Memory Demonstration: With vs. Without Context Retention
@@ -77,31 +78,31 @@ To illustrate how `ConversationMemory` works under the Agentspan framework, letâ
 
 In this scenario, the agent tracks and structures the interactions over consecutive turns, storing names internally to build answers contextually[cite: 1].
 
-*   **User 1 (Alice):**
+*   **User 1 (Safaa):**
     ```text
-    You: Hello, my name is Alice.
-    Assistant: Hello Alice! How can I help you today?
+    You: Hello, my name is Safaa.
+    Assistant: Hello Safaa! How can I help you today?
 
     You: What is my name again?
-    Assistant: Your name is Alice.
+    Assistant: Your name is Safaa.
     ```
 
-*   **User 2 (Bob):**
+*   **User 2 (Rahul):**
     ```text
-    You: Hi, I'm Bob. Can you check the time?
-    Assistant: [Tool Call: get_current_time()] The current local time is 2026-07-14 22:18:22, Bob.
+    You: Hi, I'm Rahul. Can you check the time?
+    Assistant: [Tool Call: get_current_time()] The current local time is 2026-07-14 22:18:22, Rahul.
 
     You: Awesome. What name did I give you?
-    Assistant: You told me your name is Bob.
+    Assistant: You told me your name is Rahul.
     ```
 
-*   **User 3 (Charlie):**
+*   **User 3 (Hamza):**
     ```text
-    You: Hey! Call me Charlie.
-    Assistant: Got it, Charlie. What can I do for you?
+    You: Hey! Call me Hamza.
+    Assistant: Got it, Hamza. What can I do for you?
 
     You: Who am I?
-    Assistant: You are Charlie.
+    Assistant: You are Hamza.
     ```
 
 ---
@@ -110,28 +111,28 @@ In this scenario, the agent tracks and structures the interactions over consecut
 
 If you comment out the `memory=conversation_memory` assignment or restart the application script loop cleanly without feeding back the state arrays, the core underlying model treats every entry as an isolated transaction[cite: 1].
 
-*   **User 1 (Alice):**
+*   **User 1 (Safaa):**
     ```text
-    You: Hello, my name is Alice.
-    Assistant: Hello Alice! Nice to meet you.
+    You: Hello, my name is Safaa.
+    Assistant: Hello Safaa! Nice to meet you.
 
     You: What is my name again?
     Assistant: I'm sorry, but I don't know your name since you haven't mentioned it to me yet.
     ```
 
-*   **User 2 (Bob):**
+*   **User 2 (Rahul):**
     ```text
-    You: Hi, I'm Bob.
-    Assistant: Hi Bob! How can I assist you?
+    You: Hi, I'm Rahul.
+    Assistant: Hi Rahul! How can I assist you?
 
     You: What name did I give you?
     Assistant: As an AI assistant without memory records of our past exchange, I don't have access to your name. Could you please tell me what it is?
     ```
 
-*   **User 3 (Charlie):**
+*   **User 3 (Hamza):**
     ```text
-    You: Hey! Call me Charlie.
-    Assistant: Hello Charlie! How can I be of service?
+    You: Hey! Call me Hamza.
+    Assistant: Hello Hamza! How can I be of service?
 
     You: Who am I?
     Assistant: I don't have access to your personal information or name in this turn. What should I call you?
