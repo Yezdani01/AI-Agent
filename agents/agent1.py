@@ -21,6 +21,11 @@ def get_current_time() -> str:
     """returns the current local time"""
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+@tool
+def get_weather(city: str) -> str:
+    """Get current weather for a city."""
+    return f"72°F and sunny in {city}"
+
 
 #=========================================================#
 #===============Memory for our Agent======================#
