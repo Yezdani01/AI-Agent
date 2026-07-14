@@ -56,6 +56,6 @@ Before launching the agent script, start the underlying Agentspan local runtime 
 ```bash
 uv run agentspan server start
 ```
-### Local Web UI: Open http://localhost:6767 in your browser to view the real-time visual execution stream dashboard.
+Local Web UI: Open http://localhost:6767 in your browser to view the real-time visual execution stream dashboard.
 
-### Codebase Structure (agent1.py)
+## Codebase Structure (agent1.py)
