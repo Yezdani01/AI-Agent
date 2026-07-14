@@ -59,3 +59,80 @@ uv run agentspan server start
 Local Web UI: Open http://localhost:6767 in your browser to view the real-time visual execution stream dashboard.
 
 ## Codebase Structure (agent1.py)
+Here is the implementation code containing the agent definition, custom tool declarations, and the main interactive CLI loop 
+
+
+```bash
+# To run the script
+uv run agent1.py
+
+
+### 🧠 Memory Demonstration: With vs. Without Context Retention
+
+To illustrate how `ConversationMemory` works under the Agentspan framework, let’s observe the difference between standard continuous execution tracking (With Memory) and a fresh or broken session instance (Without Memory) across three different users[cite: 1].
+
+#### 👥 Multi-User Execution Log Examples
+
+##### Case 1: Interaction **WITH** Active Conversational Memory
+
+In this scenario, the agent tracks and structures the interactions over consecutive turns, storing names internally to build answers contextually[cite: 1].
+
+*   **User 1 (Alice):**
+    ```text
+    You: Hello, my name is Alice.
+    Assistant: Hello Alice! How can I help you today?
+
+    You: What is my name again?
+    Assistant: Your name is Alice.
+    ```
+
+*   **User 2 (Bob):**
+    ```text
+    You: Hi, I'm Bob. Can you check the time?
+    Assistant: [Tool Call: get_current_time()] The current local time is 2026-07-14 22:18:22, Bob.
+
+    You: Awesome. What name did I give you?
+    Assistant: You told me your name is Bob.
+    ```
+
+*   **User 3 (Charlie):**
+    ```text
+    You: Hey! Call me Charlie.
+    Assistant: Got it, Charlie. What can I do for you?
+
+    You: Who am I?
+    Assistant: You are Charlie.
+    ```
+
+---
+
+##### Case 2: Interaction **WITHOUT** Conversational Memory (Stateless Mode / Reset Instance)
+
+If you comment out the `memory=conversation_memory` assignment or restart the application script loop cleanly without feeding back the state arrays, the core underlying model treats every entry as an isolated transaction[cite: 1].
+
+*   **User 1 (Alice):**
+    ```text
+    You: Hello, my name is Alice.
+    Assistant: Hello Alice! Nice to meet you.
+
+    You: What is my name again?
+    Assistant: I'm sorry, but I don't know your name since you haven't mentioned it to me yet.
+    ```
+
+*   **User 2 (Bob):**
+    ```text
+    You: Hi, I'm Bob.
+    Assistant: Hi Bob! How can I assist you?
+
+    You: What name did I give you?
+    Assistant: As an AI assistant without memory records of our past exchange, I don't have access to your name. Could you please tell me what it is?
+    ```
+
+*   **User 3 (Charlie):**
+    ```text
+    You: Hey! Call me Charlie.
+    Assistant: Hello Charlie! How can I be of service?
+
+    You: Who am I?
+    Assistant: I don't have access to your personal information or name in this turn. What should I call you?
+    ```
