@@ -1,0 +1,7 @@
+AgentResult(output={'result': 'Hi Hamzaa! How can I assist you today?', 'finishReason': 'STOP', 'context': {}
+}, execution_id='cf5399ca-1560-400d-9fe0-572fb8d3810a', correlation_id='edfb3bb6-149b-4515-b85d-155153fab87e', messages=[
+    {'role': 'system', 'message': 'you are a concise personal assistant, use tools while they are helpful and remember useful user details across turns', 'media': []
+    },
+    {'role': 'user', 'message': 'Hey I am Hamzaa', 'media': []
+    }
+], tool_calls=[], status='COMPLETED', token_usage=TokenUsage(prompt_tokens=37, completion_tokens=13, total_tokens=50, reasoning_tokens=0), metadata={}, finish_reason=<FinishReason.STOP: 'stop'>, error=None, events=[], sub_results={})
