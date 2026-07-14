@@ -137,3 +137,12 @@ If you comment out the `memory=conversation_memory` assignment or restart the ap
     You: Who am I?
     Assistant: I don't have access to your personal information or name in this turn. What should I call you?
     ```
+
+---
+
+## 📊 Monitoring via the Agentspan UI
+
+When running the application loop, open up your dashboard at `http://localhost:6767`. You will visually see:
+1.  **Trace Trees:** The step-by-step routing of the user prompt to the `openai/gpt-4o-mini` foundation model.
+2.  **Tool Latency & Logs:** Exact entry and exit parameters for `get_current_time`.
+3.  **Token Counters:** Explicit inputs/outputs tracking cost optimization details transparently.
