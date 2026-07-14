@@ -36,3 +36,26 @@ uv add conductor-agent-sdk python-dotenv
 
 # Verify that the CLI tool environment is properly initialized:
 uv run agentspan doctor
+```
+
+
+### Step 2 — Environment & API Configuration
+Create a .env file in the root directory of your project to connect the worker code to the Agentspan orchestrator:
+```bash
+# Define the local server runtime endpoint
+AGENTSPAN_SERVER_URL=http://localhost:6767/api
+# Export your OpenAI API Key into your active terminal shell environment:
+# For Linux/macOS
+export OPENAI_API_KEY="sk-proj-YOUR-ACTUAL-OPENAI-KEY-HERE"
+
+# For Windows PowerShell
+$env:OPENAI_API_KEY="sk-proj-YOUR-ACTUAL-OPENAI-KEY-HERE"
+```
+### Step 3 — Boot the Agentspan Server
+Before launching the agent script, start the underlying Agentspan local runtime engine. On its first execution, it will download a ~50MB JAR file and run a fast SQLite instance locally:
+```bash
+uv run agentspan server start
+```
+### Local Web UI: Open http://localhost:6767 in your browser to view the real-time visual execution stream dashboard.
+
+### Codebase Structure (agent1.py)
